@@ -8,8 +8,24 @@
  * For aabbbc should return 2a3bc
  *
  */
-function encodeLine(/* str */) {
-  throw new Error('Not implemented');
+function encodeLine(str) {
+  let newStr = '';
+  let counter = 1;
+  for (let i = 0; i < str.length; i++) {
+    counter = 1;
+    let k = i + 1;
+    while (str[i] === str[k]) {
+      counter++;
+      k++;
+    }
+    if (counter > 1) {
+      newStr += `${counter}${str[i]}`;
+    } else {
+      newStr += str[i];
+    }
+    i += counter - 1;
+  }
+  return newStr;
 }
 
 module.exports = encodeLine;
